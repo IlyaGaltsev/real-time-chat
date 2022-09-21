@@ -1,24 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import './App.css'
+import React, {useContext} from 'react';
+import Navbar from './components/Navbar';
+import AppRouter from './components/AppRouter';
+import styled from 'styled-components';
+import {useAuthState} from "react-firebase-hooks/auth"
+import { Context } from "./index";
+import { BrowserRouter as Router } from "react-router-dom";
+import Loader from './components/loader';
 
+const Wrapper = styled.div`
+  overflow: hidden;
+  background:var(--bg-color);
+  width:100%;
+  min-height:100%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  height:100vh;
+`
+const Contant = styled.div`
+  width:100%;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  height:100%;
+  overflow:auto;
+`
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  const {auth}= useContext(Context)
+  const [user, loading] = useAuthState(auth)
+  
+  if (loading){
+    return <Loader/>
+  }
+    return (
+      <Router>
+       <Wrapper>
+        <Navbar/>
+         <Contant>
+          <AppRouter/> 
+         </Contant>
+       </Wrapper>       
+      </Router>
   );
 }
 
