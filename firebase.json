@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "new-chart-on-react",
     "public": "build",
     "ignore": [
       "firebase.json",

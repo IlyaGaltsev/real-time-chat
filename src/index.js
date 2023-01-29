@@ -15,8 +15,8 @@ firebase.initializeApp({
   projectId: "chatonreact-2cd47",
   storageBucket: "chatonreact-2cd47.appspot.com",
   messagingSenderId: "837825418557",
-  appId: "1:837825418557:web:66eff19431fdef4de62154",
-  measurementId: "G-MW302QTKLY"
+  appId: "1:837825418557:web:cfad92e433f15d51e62154",
+  measurementId: "G-96HPECZMYH"
 });
 
 export const Context = createContext(null)
