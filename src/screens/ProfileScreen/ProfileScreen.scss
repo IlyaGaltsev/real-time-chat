@@ -1,0 +1,36 @@
+.profile {
+  width: 100%;
+  padding: 20px 15px;
+
+ 
+
+  &-card {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.648);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    img {
+      border-radius: 50%;
+    }
+
+    p {
+      margin: 0;
+      margin-top: 10px;
+
+      &:nth-last-child(2) {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      &:nth-last-child(1) {
+        font-size: 14px;
+        color: rgb(64, 64, 64);
+      }
+    }
+  }
+}
