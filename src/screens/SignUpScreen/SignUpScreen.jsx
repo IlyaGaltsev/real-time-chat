@@ -1,9 +1,8 @@
-import "./SignUp.scss";
+import { REGISTER_ROUTE } from "../../utils/const"
+import { Link } from "react-router-dom"
+import "./SignUpScreen.scss"
 
-const SignUp = () => {
-  const singUp = () => {
-    window.location.href = window.location.origin + "/login";
-  };
+const SignUpScreen = () => {
   return (
     <div className="signin-wrapper">
       <h1>Real Time Chat</h1>
@@ -13,10 +12,8 @@ const SignUp = () => {
       <input placeholder="enter your password" />
       <input placeholder="repeat your password" />
       <button>Create account</button>
-      <a href="#x3" onClick={singUp}>
-        Sign in
-      </a>
+      <Link to={REGISTER_ROUTE}>Sign in</Link>
     </div>
-  );
-};
-export { SignUp };
+  )
+}
+export { SignUpScreen }
