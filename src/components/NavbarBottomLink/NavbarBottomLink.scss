@@ -1,0 +1,28 @@
+.navabar-bottom__link {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  color: gray;
+  margin-right: 20px;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 4px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  p {
+    font-size: 14px;
+    margin: 10px 0 0 0;
+  }
+}
+
+.navabar-bottom__link_active {
+  background: linear-gradient(
+    90deg,
+    #21b08e 0%,
+    #6ded89 100%
+  );
+  color: white;
+}

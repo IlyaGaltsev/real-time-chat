@@ -1,3 +1,4 @@
+import { BrowserRouter as Router } from "react-router-dom"
 import { config } from "./utils/firebase-config"
 import reportWebVitals from "./reportWebVitals"
 import React, { createContext } from "react"
@@ -22,7 +23,9 @@ root.render(
     <Context.Provider
       value={{ firebase, auth, firestore }}
     >
-      <App />
+      <Router>
+        <App />
+      </Router>
     </Context.Provider>
   </React.StrictMode>
 )

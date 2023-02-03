@@ -11,6 +11,7 @@ import React, {
   useContext,
   useState
 } from "react"
+import { Navigate } from "react-router-dom"
 
 const ChatScreen = () => {
   const [value, setValue] = useState("")
@@ -43,9 +44,12 @@ const ChatScreen = () => {
     }
   }
 
-  if (loading) {
-    return <Loader />
-  } else
+  // if (loading) {
+  //   return <Loader />
+  // } else
+  if (!user) {
+    return <Navigate to="/" replace />
+  } else {
     return messages ? (
       <DefaultLayout>
         <div id="chatr" className="chat__wrapper">
@@ -103,6 +107,7 @@ const ChatScreen = () => {
     ) : (
       <p>not messages: {messages}</p>
     )
+  }
 }
 
 export { ChatScreen }
