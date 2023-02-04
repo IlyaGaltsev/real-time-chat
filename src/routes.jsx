@@ -1,15 +1,11 @@
+import { ChatBubble, Home, PeopleGroup, SettingsHorizontal } from "akar-icons"
+import { SettingsScreen } from "./screens/SettingsScreen/SettingsScreen"
+import { FriendsScreen } from "./screens/FriendsScreen"
+import { ProfileScreen } from "./screens/ProfileScreen"
 import { SignInScreen } from "./screens/SignInScreen"
 import { SignUpScreen } from "./screens/SignUpScreen"
 import { ChatScreen } from "./screens/ChatScreen"
-import { ProfileScreen } from "./screens/ProfileScreen"
-import { SettingsScreen } from "./screens/SettingsScreen/SettingsScreen"
-import { FriendsScreen } from "./screens/FriendsScreen"
-import {
-  IoChatbubblesOutline,
-  IoIdCardOutline,
-  IoPeopleOutline,
-  IoCogOutline
-} from "react-icons/io5"
+import { Navigate } from "react-router-dom"
 import {
   CHAT_ROUTE,
   LOGIN_ROUTE,
@@ -18,7 +14,6 @@ import {
   PROFILE_ROUTE,
   FRIENDS_ROUTE
 } from "./utils/const"
-import { Navigate } from "react-router-dom"
 
 export const routes = [
   {
@@ -54,22 +49,22 @@ export const routes = [
 export const navbarlinks = [
   {
     path: PROFILE_ROUTE,
-    icon: <IoIdCardOutline size={24} />,
-    title: "profile"
+    icon: <Home strokeWidth={2} size={28} />,
+    title: "Profile"
   },
   {
     path: CHAT_ROUTE,
-    icon: <IoChatbubblesOutline size={24} />,
-    title: "chat"
+    icon: <ChatBubble strokeWidth={2} size={28} />,
+    title: "Chat"
   },
   {
     path: FRIENDS_ROUTE,
-    icon: <IoPeopleOutline size={24} />,
-    title: "friends"
+    icon: <PeopleGroup strokeWidth={2} size={28} />,
+    title: "Friends"
   },
   {
     path: SETTINGS_ROUTE,
-    icon: <IoCogOutline size={24} />,
-    title: "settings"
+    icon: <SettingsHorizontal strokeWidth={2} size={28} />,
+    title: "Settings"
   }
 ]

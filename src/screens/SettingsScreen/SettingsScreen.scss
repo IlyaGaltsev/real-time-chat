@@ -1,0 +1,26 @@
+.settings-wrapper {
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  align-items: center;
+}
+
+.settings-contant {
+  width: 100%;
+  height: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow-y: auto;
+}
+
+.settings-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 10px 15px;
+}
