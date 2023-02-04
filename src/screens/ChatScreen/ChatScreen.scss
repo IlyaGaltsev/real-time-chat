@@ -4,47 +4,8 @@
   height: 100%;
   width: 100%;
   padding-bottom: 80px;
-
-  .message {
-    display: flex;
-    margin: 6px 12px 6px 12px;
-  }
-
-  .avatar {
-    border-radius: 100px;
-    width: 36px;
-    height: 36px;
-    position: sticky;
-    bottom: 68px;
-  }
-
-  .text-wrapper {
-    background: linear-gradient(
-      90deg,
-      #21b08e 0%,
-      #6ded89 100%
-    );
-    box-shadow: 10px 2px 5px
-      rgba(145, 154, 140, 0.5);
-    padding: 9px 18px 18px 18px;
-    border-radius: 18px;
-    margin-left: 8px;
-    max-width: 60vw;
-  }
-
-  .user-name {
-    font-size: 12px;
-    color: white;
-    font-weight: 700;
-  }
-
-  .user-text {
-    font-size: 14px;
-    color: white;
-    text-shadow: 1px 1px 0 rgb(75, 70, 70);
-  }
 }
 
-#divFirst {
-  height: 100px;
+.bottomDiv {
+  height: 400px;
 }
