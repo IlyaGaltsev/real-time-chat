@@ -23,8 +23,8 @@ const SignUpScreen = () => {
       .then(() => {
         updateProfile(auth.currentUser, {
           displayName: userData.name,
-          photoURL:
-            "https://avatars.mds.yandex.net/get-entity_search/58808/275236214/S122x122Fit_2x"
+          photoURL: "https://cdn-icons-png.flaticon.com/512/2948/2948035.png"
+            // "https://avatars.mds.yandex.net/get-entity_search/58808/275236214/S122x122Fit_2x"
         })
         window.location.reload()
       })

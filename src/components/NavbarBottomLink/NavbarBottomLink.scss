@@ -1,8 +1,7 @@
 .navabar-bottom__link {
   text-decoration: none;
   display: flex;
-  flex-direction: column;
-  color: gray;
+  color: #26b48e;
   margin-right: 20px;
   align-items: center;
   padding: 6px 10px;
@@ -13,8 +12,12 @@
   }
 
   p {
+    @media (max-width: 500px) {
+      display: none;
+    }
     font-size: 14px;
-    margin: 10px 0 0 0;
+    font-weight: 700;
+    margin: 0 0 0 10px;
   }
 }
 
