@@ -20,7 +20,7 @@ const SettingsInput = props => {
       referense.current.disabled = true
       referense.current.focus()
     }
-  }, [change])
+  }, [change, referense])
 
   const handleOnClick = () => {
     setChange(!change)

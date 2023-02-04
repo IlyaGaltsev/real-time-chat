@@ -24,7 +24,6 @@ const SignUpScreen = () => {
         updateProfile(auth.currentUser, {
           displayName: userData.name,
           photoURL: "https://cdn-icons-png.flaticon.com/512/2948/2948035.png"
-            // "https://avatars.mds.yandex.net/get-entity_search/58808/275236214/S122x122Fit_2x"
         })
         window.location.reload()
       })
@@ -43,7 +42,7 @@ const SignUpScreen = () => {
   return (
     <div className="signin-wrapper">
       <h1>Real Time Chat</h1>
-      <p>log in to your account</p>
+      <p>create your account</p>
       <input
         name="name"
         value={userData.name}

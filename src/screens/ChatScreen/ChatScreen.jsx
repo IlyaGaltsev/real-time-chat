@@ -2,35 +2,42 @@ import { useCollectionData } from "react-firebase-hooks/firestore"
 import { DefaultLayout } from "../../layouts/DefaultLayout"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { ChatTools } from "../../components/ChatTools"
+import { Message } from "../../components/Message"
 import { Loader } from "../../components/Loader"
+import { Navigate } from "react-router-dom"
 import firebase from "firebase/compat/app"
 import { Context } from "../../index"
 import { v4 as uuidv4 } from "uuid"
 import "./ChatScreen.scss"
 import React, {
   useContext,
+  useEffect,
+  useRef,
   useState
 } from "react"
-import { Navigate } from "react-router-dom"
 
 const ChatScreen = () => {
   const [value, setValue] = useState("")
   const { auth, firestore } = useContext(Context)
   const [user] = useAuthState(auth)
+  const bottomDiv = useRef(null)
   const [messages, loading] = useCollectionData(
     firestore
       .collection("messages")
       .orderBy("created")
   )
 
-  const toBottom = () => {
-    document
-      .getElementById("divFirst")
-      .scrollIntoView(true)
-  }
+  useEffect(() => {
+    setTimeout(
+      () =>
+        bottomDiv.current.scrollIntoView({
+          behavior: "smooth"
+        }),
+      100
+    )
+  }, [messages])
 
   const sendMessage = () => {
-    toBottom()
     if (value) {
       firestore.collection("messages").add({
         uid: user.uid,
@@ -44,59 +51,27 @@ const ChatScreen = () => {
     }
   }
 
-  // if (loading) {
-  //   return <Loader />
-  // } else
-  if (!user) {
+  if (loading) {
+    return <Loader />
+  } else if (!user) {
     return <Navigate to="/" replace />
   } else {
     return messages ? (
       <DefaultLayout>
-        <div id="chatr" className="chat__wrapper">
+        <div className="chat__wrapper">
           {messages.map(message => {
-            if (message.uid === user.uid) {
-              return (
-                <div
-                  className="message"
-                  key={uuidv4()}
-                  style={{
-                    justifyContent: "end"
-                  }}
-                >
-                  <div className="text-wrapper">
-                    <div className="user-text">
-                      {message.text}
-                    </div>
-                  </div>
-                </div>
-              )
-            } else {
-              return (
-                <div
-                  className="message"
-                  key={uuidv4()}
-                  style={{
-                    alignItems: "self-end"
-                  }}
-                >
-                  <img
-                    className="avatar"
-                    src={message.photoUrl}
-                    alt="Avag"
-                  />
-                  <div className="text-wrapper">
-                    <div className="user-name">
-                      {message.displayName}
-                    </div>
-                    <div className="user-text">
-                      {message.text}
-                    </div>
-                  </div>
-                </div>
-              )
-            }
+            return (
+              <Message
+                key={uuidv4()}
+                meUid={user.uid}
+                {...message}
+              />
+            )
           })}
-          <div id="divFirst"></div>
+          <div
+            className="bottomDiv"
+            ref={bottomDiv}
+          />
           <ChatTools
             value={value}
             sendMessage={sendMessage}
@@ -105,7 +80,7 @@ const ChatScreen = () => {
         </div>
       </DefaultLayout>
     ) : (
-      <p>not messages: {messages}</p>
+      <p>First word for you. Start a chat!</p>
     )
   }
 }
