@@ -24,7 +24,6 @@ const Message = props => {
           alt="Avag"
         />
       )}
-
       <div className="message__text-wrapper">
         {itsNoMe && (
           <div className="message__user-name">

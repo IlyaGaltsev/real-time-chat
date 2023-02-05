@@ -1,10 +1,10 @@
-import { LOGIN_ROUTE } from "../../utils/const"
-import { Link } from "react-router-dom"
-import "./SignUpScreen.scss"
 import { createUserWithEmailAndPassword } from "firebase/auth"
-import { useContext, useState } from "react"
-import { Context } from "../.."
+import { LOGIN_ROUTE } from "../../utils/const"
 import { updateProfile } from "firebase/auth"
+import { useContext, useState } from "react"
+import { Link } from "react-router-dom"
+import { Context } from "../.."
+import "./SignUpScreen.scss"
 
 const SignUpScreen = () => {
   const [userData, setUserData] = useState({
@@ -23,7 +23,8 @@ const SignUpScreen = () => {
       .then(() => {
         updateProfile(auth.currentUser, {
           displayName: userData.name,
-          photoURL: "https://cdn-icons-png.flaticon.com/512/2948/2948035.png"
+          photoURL:
+            "https://cdn-icons-png.flaticon.com/512/2948/2948035.png"
         })
         window.location.reload()
       })
@@ -39,6 +40,7 @@ const SignUpScreen = () => {
       [name]: e.target.value
     })
   }
+  
   return (
     <div className="signin-wrapper">
       <h1>Real Time Chat</h1>
@@ -49,7 +51,7 @@ const SignUpScreen = () => {
         onChange={handleOnChange}
         placeholder="enter your name"
       />
-       <input
+      <input
         name="email"
         value={userData.email}
         onChange={handleOnChange}

@@ -1,16 +1,14 @@
-import { Pencil } from "akar-icons"
+import { SettingsInput } from "../../components/SettingsInput"
+import { NavbarBottom } from "../../components/NavbarBottom"
+import { useAuthState } from "react-firebase-hooks/auth"
 import { updateProfile } from "firebase/auth"
+import { Context } from "../.."
+import "./SettingsScreen.scss"
 import {
   useContext,
-  useLayoutEffect,
   useRef,
   useState
 } from "react"
-import { useAuthState } from "react-firebase-hooks/auth"
-import { Context } from "../.."
-import { NavbarBottom } from "../../components/NavbarBottom"
-import { SettingsInput } from "../../components/SettingsInput"
-import "./SettingsScreen.scss"
 
 const SettingsScreen = () => {
   const inputImage = useRef(null)

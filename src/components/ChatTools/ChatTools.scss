@@ -1,7 +1,5 @@
 .bottom-tools {
-  position: sticky;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.648);
+  background:  var(--background-sticky-tools);
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -9,6 +7,8 @@
   border-top-right-radius: 10px;
   max-width: 700px;
   width: 100%;
+  position: sticky;
+  bottom: 0;
 
   &__wrapper {
     padding: 10px 15px;
@@ -16,7 +16,7 @@
     width: 100%;
 
     input {
-      background: white;
+      background: var(--primary-font-color);
       border-radius: 6px;
       width: 100%;
       padding: 14px 24px;
@@ -27,8 +27,8 @@
     button {
       padding: 8px;
       border-radius: 6px;
-      background: #21b08e;
-      color: white;
+      background: var(--background-one-ton);
+      color: var(--primary-font-color);
     }
   }
 }

@@ -11,33 +11,28 @@
   width: 36px;
   height: 36px;
   position: sticky;
-  bottom: 68px;
+  bottom: 4px;
   align-self: flex-end;
 }
 
 .message__text-wrapper {
-  background: linear-gradient(
-    90deg,
-    #21b08e 0%,
-    #6ded89 100%
-  );
-  box-shadow: 10px 2px 5px
-    rgba(145, 154, 140, 0.5);
+  background: var(--background-color);
+  box-shadow: var(--message-shadow);
   padding: 9px 18px 18px 18px;
   border-radius: 18px;
   margin-left: 8px;
   max-width: 500px;
-  width:100%;
+  width: 100%;
 }
 
 .message__user-name {
   font-size: 12px;
-  color: white;
+  color: var(--primary-font-color);
   font-weight: 700;
 }
 
 .message__user-text {
   font-size: 14px;
-  color: white;
+  color: var(--primary-font-color);
   text-shadow: 1px 1px 0 rgb(75, 70, 70);
 }

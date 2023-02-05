@@ -1,4 +1,3 @@
-import { ChatBubble, Home, PeopleGroup, SettingsHorizontal } from "akar-icons"
 import { SettingsScreen } from "./screens/SettingsScreen/SettingsScreen"
 import { FriendsScreen } from "./screens/FriendsScreen"
 import { ProfileScreen } from "./screens/ProfileScreen"
@@ -14,6 +13,12 @@ import {
   PROFILE_ROUTE,
   FRIENDS_ROUTE
 } from "./utils/const"
+import {
+  ChatBubble,
+  Home,
+  PeopleGroup,
+  SettingsHorizontal
+} from "akar-icons"
 
 export const routes = [
   {
@@ -54,17 +59,26 @@ export const navbarlinks = [
   },
   {
     path: CHAT_ROUTE,
-    icon: <ChatBubble strokeWidth={2} size={28} />,
+    icon: (
+      <ChatBubble strokeWidth={2} size={28} />
+    ),
     title: "Chat"
   },
   {
     path: FRIENDS_ROUTE,
-    icon: <PeopleGroup strokeWidth={2} size={28} />,
+    icon: (
+      <PeopleGroup strokeWidth={2} size={28} />
+    ),
     title: "Friends"
   },
   {
     path: SETTINGS_ROUTE,
-    icon: <SettingsHorizontal strokeWidth={2} size={28} />,
+    icon: (
+      <SettingsHorizontal
+        strokeWidth={2}
+        size={28}
+      />
+    ),
     title: "Settings"
   }
 ]
