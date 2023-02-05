@@ -1,7 +1,7 @@
 .navabar-bottom__link {
   text-decoration: none;
   display: flex;
-  color: #26b48e;
+  color: var(--background-one-ton);
   margin-right: 20px;
   align-items: center;
   padding: 6px 10px;
@@ -12,20 +12,17 @@
   }
 
   p {
-    @media (max-width: 500px) {
-      display: none;
-    }
     font-size: 14px;
     font-weight: 700;
     margin: 0 0 0 10px;
+
+    @media (max-width: 500px) {
+      display: none;
+    }
   }
 }
 
 .navabar-bottom__link_active {
-  background: linear-gradient(
-    90deg,
-    #21b08e 0%,
-    #6ded89 100%
-  );
+  background: var(--background-color);
   color: white;
 }

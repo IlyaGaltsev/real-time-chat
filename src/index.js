@@ -7,7 +7,7 @@ import ReactDOM from "react-dom/client"
 import "firebase/compat/firestore"
 import "firebase/compat/auth"
 import { App } from "./App"
-import "./index.css"
+import "./index.scss"
 
 export const Context = createContext(null)
 

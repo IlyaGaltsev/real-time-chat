@@ -1,14 +1,14 @@
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { REGISTER_ROUTE } from "../../utils/const"
+import firebase from "firebase/compat/app"
+import { FcGoogle } from "react-icons/fc"
+import { Link } from "react-router-dom"
+import { Context } from "../../index"
+import "./SignInScreen.scss"
 import React, {
   useContext,
   useState
 } from "react"
-import firebase from "firebase/compat/app"
-import { FcGoogle } from "react-icons/fc"
-import { Context } from "../../index"
-import "./SignInScreen.scss"
-import { signInWithEmailAndPassword } from "firebase/auth"
-import { PROFILE_ROUTE, REGISTER_ROUTE } from "../../utils/const"
-import { Link, useNavigate } from "react-router-dom"
 
 const SignInScreen = () => {
   const { auth } = useContext(Context)
@@ -19,42 +19,27 @@ const SignInScreen = () => {
 
   const handleOnChangeInput = e => {
     let name = e.target.name
-    setUserData({
-      ...userData,
-      [name]: e.target.value
-    })
-    console.log(userData)
+    setUserData({...userData, [name]: e.target.value})
   }
-
-
 
   const signIn = () => {
     signInWithEmailAndPassword(
       auth,
       userData.email,
       userData.password
-    )
-      .then(userCredential => {
-        // Signed in
-        const user = userCredential.user
-        console.log("user", user)
-
-        // ...
-      })
-      .catch(error => {
-        console.log("error-signin", error)
-      })
+    ).catch(error => {
+      console.log("error-signin", error)
+    })
   }
 
-  const login = async () => {
-    const provider =
-      new firebase.auth.GoogleAuthProvider()
+  const signInWithGoogle = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider()
     const { user } = await auth.signInWithPopup(
       provider
     )
     console.log("user", user)
   }
-  
+
   return (
     <div className="signin-wrapper">
       <h1>Real Time Chat</h1>
@@ -72,7 +57,7 @@ const SignInScreen = () => {
         placeholder="enter your password"
       />
       <button onClick={signIn}>Sing in</button>
-      <button onClick={login}>
+      <button onClick={signInWithGoogle}>
         <FcGoogle
           className="button-icons"
           size={20}

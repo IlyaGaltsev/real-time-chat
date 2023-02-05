@@ -1,5 +1,4 @@
 import { useCollectionData } from "react-firebase-hooks/firestore"
-import { DefaultLayout } from "../../layouts/DefaultLayout"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { ChatTools } from "../../components/ChatTools"
 import { Message } from "../../components/Message"
@@ -57,8 +56,8 @@ const ChatScreen = () => {
     return <Navigate to="/" replace />
   } else {
     return messages ? (
-      <DefaultLayout>
-        <div className="chat__wrapper">
+      <div className="chat__wrapper">
+        <div className="chat__messages">
           {messages.map(message => {
             return (
               <Message
@@ -72,13 +71,13 @@ const ChatScreen = () => {
             className="bottomDiv"
             ref={bottomDiv}
           />
-          <ChatTools
-            value={value}
-            sendMessage={sendMessage}
-            setValue={setValue}
-          />
         </div>
-      </DefaultLayout>
+        <ChatTools
+          value={value}
+          sendMessage={sendMessage}
+          setValue={setValue}
+        />
+      </div>
     ) : (
       <p>First word for you. Start a chat!</p>
     )

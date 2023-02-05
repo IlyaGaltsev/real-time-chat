@@ -1,11 +1,9 @@
 import { NavLink } from "react-router-dom"
 import "./NavbarBottomLink.scss"
 
-const NavbarBottomLink = ({
-  path,
-  icon,
-  title
-}) => {
+const NavbarBottomLink = props => {
+  const { path, icon, title } = props
+  
   return (
     <NavLink
       to={path}

@@ -1,23 +1,23 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAuthState } from "react-firebase-hooks/auth"
+import { DefaultLayout } from "../layouts/DefaultLayout"
 import { Loader } from "../components/Loader"
+import { Context } from "../index"
+import { routes } from "../routes"
+import "./App.scss"
 import React, {
   useContext,
-  useEffect,
-  useState
+  useEffect
 } from "react"
 import {
   Route,
   Routes,
   useNavigate
 } from "react-router-dom"
-import { Context } from "../index"
-import "./App.scss"
-import { routes } from "../routes"
 import {
   LOGIN_ROUTE,
   PROFILE_ROUTE
 } from "../utils/const"
-import { DefaultLayout } from "../layouts/DefaultLayout"
 
 function App() {
   const { auth } = useContext(Context)

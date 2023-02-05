@@ -1,24 +1,24 @@
 .signin-wrapper {
-  width: 100%;
   margin-top: 70px;
-  color: white;
   display: flex;
   flex-direction: column;
-  text-align: center;
-  padding: 0 15px;
   justify-content: center;
+  text-align: center;
+  color: var(--primary-font-color);
+  padding: 0 15px;
   max-width: 600px;
+  width: 100%;
 
   h1 {
-    font-size: 36px;
     margin: 0px;
-    color: white;
+    font-size: 36px;
+    color: var(--primary-font-color);
   }
 
   p {
-    font-size: 16px;
-    color: #ffffff;
     margin-bottom: 74px;
+    font-size: 16px;
+    color: var(--primary-font-color);
   }
 
   input {
@@ -29,18 +29,18 @@
   }
 
   button {
-    width: 100%;
     max-width: none;
     padding: 14px 24px;
     border-radius: 24px;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
-    background: white;
     justify-content: center;
+    background: var(--primary-font-color);
+    color: var(--background-one-ton);
     font-size: 16px;
-    color: #21b08e;
     font-weight: 700;
+    width: 100%;
 
     .button-icons {
       margin-right: 10px;
