@@ -1,6 +1,6 @@
-import { BrowserRouter as Router } from "react-router-dom"
 import { config } from "./utils/firebase-config"
 import reportWebVitals from "./reportWebVitals"
+import { HashRouter } from "react-router-dom"
 import React, { createContext } from "react"
 import firebase from "firebase/compat/app"
 import ReactDOM from "react-dom/client"
@@ -23,9 +23,9 @@ root.render(
     <Context.Provider
       value={{ firebase, auth, firestore }}
     >
-      <Router>
+      <HashRouter>
         <App />
-      </Router>
+      </HashRouter>
     </Context.Provider>
   </React.StrictMode>
 )
