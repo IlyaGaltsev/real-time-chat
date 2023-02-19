@@ -1,11 +1,15 @@
 .me-message {
+  display: flex;
+  margin: 6px 12px;
   align-self: flex-end;
 }
 
 .message {
   display: flex;
-  margin: 6px 12px 6px 12px;
+  margin: 6px 12px;
+  align-self: flex-start;
 }
+
 .message__avatar {
   border-radius: 100px;
   width: 36px;
@@ -16,23 +20,31 @@
 }
 
 .message__text-wrapper {
-  background: var(--background-color);
-  box-shadow: var(--message-shadow);
-  padding: 9px 18px 18px 18px;
+  background: var(--secondary-color);
+  color: var(--desctiptions-color);
+  padding: 9px 18px;
   border-radius: 18px;
   margin-left: 8px;
   max-width: 500px;
   width: 100%;
 }
 
+.message__text-wrapper_me {
+  background: var(--primary-color);
+  color: var(--third-color);
+  padding: 9px 18px;
+  border-radius: 18px;
+  margin-left: 8px;
+  max-width: 500px;
+  width: 100%;
+}
 .message__user-name {
   font-size: 12px;
-  color: var(--primary-font-color);
+  color: var(--primary-color);
   font-weight: 700;
+  padding-bottom: 4px;
 }
 
 .message__user-text {
   font-size: 14px;
-  color: var(--primary-font-color);
-  text-shadow: 1px 1px 0 rgb(75, 70, 70);
 }

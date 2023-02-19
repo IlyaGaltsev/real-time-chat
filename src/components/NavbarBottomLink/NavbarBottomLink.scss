@@ -1,7 +1,7 @@
 .navabar-bottom__link {
   text-decoration: none;
   display: flex;
-  color: var(--background-one-ton);
+  color: var(--primary-color);
   margin-right: 20px;
   align-items: center;
   padding: 6px 10px;
@@ -23,6 +23,6 @@
 }
 
 .navabar-bottom__link_active {
-  background: var(--background-color);
-  color: white;
+  background: var(--primary-color);
+  color: var(--third-color);
 }

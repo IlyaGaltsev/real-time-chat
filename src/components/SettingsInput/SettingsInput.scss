@@ -1,5 +1,5 @@
 .settings-input {
-  background: var(--background-sticky-tools);
+  background: var(--secondary-color);
   height: auto;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@
     font-weight: 700;
     margin: 0;
     margin-right: 10px;
-    color: var(--background-one-ton);
+    color: var(--primary-color);
 
     @media (max-width: 500px) {
       font-size: 14px;

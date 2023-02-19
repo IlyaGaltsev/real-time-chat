@@ -14,7 +14,8 @@ const SignUpScreen = () => {
   })
   const { auth } = useContext(Context)
 
-  const createAccount = () => {
+  const createAccount = e => {
+    e.preventDefault()
     createUserWithEmailAndPassword(
       auth,
       userData.email,
@@ -29,7 +30,7 @@ const SignUpScreen = () => {
         window.location.reload()
       })
       .catch(error => {
-        console.log("error-signup", error)
+        alert(error.message)
       })
   }
 
@@ -40,9 +41,12 @@ const SignUpScreen = () => {
       [name]: e.target.value
     })
   }
-  
+
   return (
-    <div className="signin-wrapper">
+    <form
+      className="signin-wrapper"
+      onSubmit={createAccount}
+    >
       <h1>Real Time Chat</h1>
       <p>create your account</p>
       <input
@@ -63,11 +67,9 @@ const SignUpScreen = () => {
         onChange={handleOnChange}
         placeholder="enter your password"
       />
-      <button onClick={createAccount}>
-        Create account
-      </button>
+      <button>Create account</button>
       <Link to={LOGIN_ROUTE}>Sign in</Link>
-    </div>
+    </form>
   )
 }
 export { SignUpScreen }

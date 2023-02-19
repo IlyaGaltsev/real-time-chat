@@ -19,21 +19,26 @@ const SignInScreen = () => {
 
   const handleOnChangeInput = e => {
     let name = e.target.name
-    setUserData({...userData, [name]: e.target.value})
+    setUserData({
+      ...userData,
+      [name]: e.target.value
+    })
   }
 
-  const signIn = () => {
+  const signIn = e => {
+    e.preventDefault()
     signInWithEmailAndPassword(
       auth,
       userData.email,
       userData.password
     ).catch(error => {
-      console.log("error-signin", error)
+      alert(error.message)
     })
   }
 
   const signInWithGoogle = async () => {
-    const provider = new firebase.auth.GoogleAuthProvider()
+    const provider =
+      new firebase.auth.GoogleAuthProvider()
     const { user } = await auth.signInWithPopup(
       provider
     )
@@ -41,7 +46,10 @@ const SignInScreen = () => {
   }
 
   return (
-    <div className="signin-wrapper">
+    <form
+      className="signin-wrapper"
+      onSubmit={signIn}
+    >
       <h1>Real Time Chat</h1>
       <p>log in to your account</p>
       <input
@@ -56,7 +64,7 @@ const SignInScreen = () => {
         onChange={handleOnChangeInput}
         placeholder="enter your password"
       />
-      <button onClick={signIn}>Sing in</button>
+      <button>Sing in</button>
       <button onClick={signInWithGoogle}>
         <FcGoogle
           className="button-icons"
@@ -67,7 +75,7 @@ const SignInScreen = () => {
       <Link to={REGISTER_ROUTE}>
         Create your account
       </Link>
-    </div>
+    </form>
   )
 }
 

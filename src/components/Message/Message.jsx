@@ -13,9 +13,9 @@ const Message = props => {
 
   return (
     <div
-      className={`message ${
-        !itsNoMe && 'me-message'
-      }`}
+      className={
+        !itsNoMe ? "me-message" : "message"
+      }
     >
       {itsNoMe && (
         <img
@@ -24,7 +24,13 @@ const Message = props => {
           alt="Avag"
         />
       )}
-      <div className="message__text-wrapper">
+      <div
+        className={
+          itsNoMe
+            ? "message__text-wrapper"
+            : "message__text-wrapper_me"
+        }
+      >
         {itsNoMe && (
           <div className="message__user-name">
             {displayName}

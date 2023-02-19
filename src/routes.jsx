@@ -20,7 +20,7 @@ import {
   SettingsHorizontal
 } from "akar-icons"
 
-export const routes = [
+export const publicRoutes = [
   {
     path: LOGIN_ROUTE,
     Component: <SignInScreen />
@@ -29,6 +29,13 @@ export const routes = [
     path: REGISTER_ROUTE,
     Component: <SignUpScreen />
   },
+  {
+    path: "*",
+    Component: <Navigate to="/" replace />
+  }
+]
+
+export const privateRoutes = [
   {
     path: CHAT_ROUTE,
     Component: <ChatScreen />
@@ -47,7 +54,7 @@ export const routes = [
   },
   {
     path: "*",
-    Component: <Navigate to="/" replace />
+    Component: <Navigate to="/profile" replace />
   }
 ]
 

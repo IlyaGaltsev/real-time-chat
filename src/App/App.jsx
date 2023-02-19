@@ -1,53 +1,54 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useAuthState } from "react-firebase-hooks/auth"
 import { DefaultLayout } from "../layouts/DefaultLayout"
+import { Route, Routes } from "react-router-dom"
 import { Loader } from "../components/Loader"
+import React, { useContext } from "react"
 import { Context } from "../index"
-import { routes } from "../routes"
+import {
+  privateRoutes,
+  publicRoutes
+} from "../routes"
 import "./App.scss"
-import React, {
-  useContext,
-  useEffect
-} from "react"
-import {
-  Route,
-  Routes,
-  useNavigate
-} from "react-router-dom"
-import {
-  LOGIN_ROUTE,
-  PROFILE_ROUTE
-} from "../utils/const"
 
 function App() {
   const { auth } = useContext(Context)
   const [user, loading] = useAuthState(auth)
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    user
-      ? navigate(PROFILE_ROUTE)
-      : navigate(LOGIN_ROUTE)
-
-    console.log("user:", user)
-  }, [user])
 
   if (loading) {
     return <Loader />
   } else {
     return (
       <DefaultLayout>
-        <Routes>
-          {routes.map(({ path, Component }) => {
-            return (
-              <Route
-                key={path}
-                path={path}
-                element={Component}
-              />
-            )
-          })}
-        </Routes>
+        {user ? (
+          <Routes>
+            {privateRoutes.map(
+              ({ path, Component }) => {
+                return (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={Component}
+                  />
+                )
+              }
+            )}
+          </Routes>
+        ) : (
+          <Routes>
+            {publicRoutes.map(
+              ({ path, Component }) => {
+                return (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={Component}
+                  />
+                )
+              }
+            )}
+          </Routes>
+        )}
       </DefaultLayout>
     )
   }
