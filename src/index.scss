@@ -6,8 +6,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco,
-    Consolas, "Courier New", monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 html {
@@ -16,8 +15,11 @@ html {
   --secondary-color: #f1f5fe;
   --third-color: #ffffff;
   --desctiptions-color: #696969;
-  --input-shadow: inset 0px 2px 1px
-    rgba(153, 153, 153, 0.25);
+  --input-shadow: inset 0px 2px 1px rgba(153, 153, 153, 0.25);
+
+  --active-bg-color: #85aeff;
+  --active-font-color: #578ffe;
+  --input-error: rgb(253, 177, 177);
 }
 
 ::-webkit-scrollbar {
@@ -32,8 +34,7 @@ html {
   background-color: var(--secondary-color);
   border-radius: 20px;
   margin-left: 10px;
-  box-shadow: inset 0 0 6px
-    rgba(114, 114, 114, 0.575);
+  box-shadow: inset 0 0 6px rgba(114, 114, 114, 0.575);
 }
 
 #root {

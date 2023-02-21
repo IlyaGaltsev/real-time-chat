@@ -5,65 +5,70 @@ import { FcGoogle } from "react-icons/fc"
 import { Link } from "react-router-dom"
 import { Context } from "../../index"
 import "./SignInScreen.scss"
-import React, {
-  useContext,
-  useState
-} from "react"
+import React, { useContext } from "react"
+import { useForm } from "react-hook-form"
+import { TextInput } from "../../components/TextInput"
+import { signInFileds } from "../../utils/inputFileds"
 
 const SignInScreen = () => {
   const { auth } = useContext(Context)
-  const [userData, setUserData] = useState({
-    email: "",
-    password: ""
-  })
+  const {
+    register,
+    formState: { errors },
+    setError,
+    handleSubmit
+  } = useForm()
 
-  const handleOnChangeInput = e => {
-    let name = e.target.name
-    setUserData({
-      ...userData,
-      [name]: e.target.value
-    })
-  }
+  const signIn = data => {
+    console.log(data)
 
-  const signIn = e => {
-    e.preventDefault()
-    signInWithEmailAndPassword(
-      auth,
-      userData.email,
-      userData.password
-    ).catch(error => {
-      alert(error.message)
+    signInWithEmailAndPassword(auth, data.email, data.password).catch(err => {
+      let jsonError = JSON.stringify(err)
+      const code = JSON.parse(jsonError).code
+
+      if (code.includes("password")) {
+        setError("password", {
+          message: "Incorrect password"
+        })
+      }
+
+      if (code.includes("requests")) {
+        setError("email", {
+          message: "Too many login attempts"
+        })
+      }
+
+      if (code.includes("found")) {
+        setError("email", {
+          message: "Not found this user"
+        })
+      }
     })
   }
 
   const signInWithGoogle = async () => {
-    const provider =
-      new firebase.auth.GoogleAuthProvider()
-    const { user } = await auth.signInWithPopup(
-      provider
-    )
+    const provider = new firebase.auth.GoogleAuthProvider()
+    const { user } = await auth.signInWithPopup(provider)
     console.log("user", user)
   }
 
   return (
     <form
       className="signin-wrapper"
-      onSubmit={signIn}
+      onSubmit={handleSubmit(signIn)}
     >
       <h1>Real Time Chat</h1>
       <p>log in to your account</p>
-      <input
-        name="email"
-        value={userData.email}
-        onChange={handleOnChangeInput}
-        placeholder="enter your email"
-      />
-      <input
-        name="password"
-        value={userData.password}
-        onChange={handleOnChangeInput}
-        placeholder="enter your password"
-      />
+      {signInFileds.map(fileds => {
+        return (
+          <TextInput
+            key={fileds.name}
+            register={register}
+            errors={errors[fileds.name]}
+            {...fileds}
+          />
+        )
+      })}
       <button>Sing in</button>
       <button onClick={signInWithGoogle}>
         <FcGoogle
@@ -72,9 +77,7 @@ const SignInScreen = () => {
         />
         Sing in with google
       </button>
-      <Link to={REGISTER_ROUTE}>
-        Create your account
-      </Link>
+      <Link to={REGISTER_ROUTE}>Create your account</Link>
     </form>
   )
 }

@@ -3,7 +3,7 @@ import "./NavbarBottomLink.scss"
 
 const NavbarBottomLink = props => {
   const { path, icon, title } = props
-  
+
   return (
     <NavLink
       to={path}

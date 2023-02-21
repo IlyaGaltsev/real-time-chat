@@ -6,23 +6,38 @@
   align-items: center;
   padding: 6px 10px;
   border-radius: 4px;
+  transition: 0.2s;
 
   &:last-child {
     margin-right: 0;
   }
 
   p {
+    display: none;
     font-size: 14px;
     font-weight: 700;
     margin: 0 0 0 10px;
+    opacity: 0;
+  }
 
-    @media (max-width: 500px) {
-      display: none;
-    }
+  &:hover {
+    background: var(--primary-color);
+    color: var(--third-color);
+  }
+
+  &:active {
+    background: var(--active-bg-color);
+    color: var(--active-font-color);
   }
 }
 
 .navabar-bottom__link_active {
   background: var(--primary-color);
   color: var(--third-color);
+  transition-property: background-color;
+  transition-duration: 3s;
+  p {
+    display: block;
+    opacity: 1;
+  }
 }
