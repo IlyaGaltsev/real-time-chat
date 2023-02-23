@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/RealTime-Chat/static/css/main.2b650594.css",
-    "main.js": "/RealTime-Chat/static/js/main.766e2574.js",
+    "main.css": "/RealTime-Chat/static/css/main.01f7ca8c.css",
+    "main.js": "/RealTime-Chat/static/js/main.b6e3d81b.js",
     "static/js/787.732f2170.chunk.js": "/RealTime-Chat/static/js/787.732f2170.chunk.js",
     "index.html": "/RealTime-Chat/index.html",
-    "main.2b650594.css.map": "/RealTime-Chat/static/css/main.2b650594.css.map",
-    "main.766e2574.js.map": "/RealTime-Chat/static/js/main.766e2574.js.map",
+    "main.01f7ca8c.css.map": "/RealTime-Chat/static/css/main.01f7ca8c.css.map",
+    "main.b6e3d81b.js.map": "/RealTime-Chat/static/js/main.b6e3d81b.js.map",
     "787.732f2170.chunk.js.map": "/RealTime-Chat/static/js/787.732f2170.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.2b650594.css",
-    "static/js/main.766e2574.js"
+    "static/css/main.01f7ca8c.css",
+    "static/js/main.b6e3d81b.js"
   ]
 }
