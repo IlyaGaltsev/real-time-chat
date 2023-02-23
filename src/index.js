@@ -14,15 +14,11 @@ export const Context = createContext(null)
 firebase.initializeApp(config)
 const auth = firebase.auth()
 const firestore = firebase.firestore()
-const root = ReactDOM.createRoot(
-  document.getElementById("root")
-)
+const root = ReactDOM.createRoot(document.getElementById("root"))
 
 root.render(
   <React.StrictMode>
-    <Context.Provider
-      value={{ firebase, auth, firestore }}
-    >
+    <Context.Provider value={{ firebase, auth, firestore }}>
       <HashRouter>
         <App />
       </HashRouter>

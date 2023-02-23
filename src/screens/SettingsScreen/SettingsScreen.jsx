@@ -4,11 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { updateProfile } from "firebase/auth"
 import { Context } from "../.."
 import "./SettingsScreen.scss"
-import {
-  useContext,
-  useRef,
-  useState
-} from "react"
+import { useContext, useEffect, useRef, useState } from "react"
+import { ThemeContext } from "../../Contexts/themeContext"
 
 const SettingsScreen = () => {
   const inputImage = useRef(null)
@@ -16,12 +13,8 @@ const SettingsScreen = () => {
   const { auth } = useContext(Context)
   const [user] = useAuthState(auth)
 
-  const [urlImage, setUrlImage] = useState(
-    user.photoURL
-  )
-  const [displayName, setDisplayName] = useState(
-    user.displayName
-  )
+  const [urlImage, setUrlImage] = useState(user.photoURL)
+  const [displayName, setDisplayName] = useState(user.displayName)
 
   const updateImage = name => {
     updateProfile(auth.currentUser, {
@@ -38,10 +31,10 @@ const SettingsScreen = () => {
   const handleOnChange = e => {
     let name = e.target.name
 
-    name === "diplayName"
-      ? setDisplayName(e.target.value)
-      : setUrlImage(e.target.value)
+    name === "diplayName" ? setDisplayName(e.target.value) : setUrlImage(e.target.value)
   }
+
+  const { isTheme, setAppTheme } = useContext(ThemeContext)
 
   return (
     <div className="settings-wrapper">
@@ -63,6 +56,11 @@ const SettingsScreen = () => {
             referense={inputImage}
             onSave={updateImage}
           />
+          <div onClick={setAppTheme}>
+            <p style={{ color: "red" }}>
+              {isTheme ? "Темная тема" : "Светлая тема"}
+            </p>
+          </div>
         </div>
       </div>
       <NavbarBottom />

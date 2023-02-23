@@ -11,6 +11,20 @@ code {
 
 html {
   scroll-behavior: smooth;
+}
+.dark {
+  --primary-color: #578ffe;
+  --secondary-color: #363a43;
+  --third-color: #2e2b2b;
+  --desctiptions-color: #696969;
+  --input-shadow: inset 0px 2px 1px rgba(201, 200, 200, 0.25);
+
+  --active-bg-color: #85aeff;
+  --active-font-color: #578ffe;
+  --input-error: rgb(253, 177, 177);
+}
+
+.light {
   --primary-color: #578ffe;
   --secondary-color: #f1f5fe;
   --third-color: #ffffff;

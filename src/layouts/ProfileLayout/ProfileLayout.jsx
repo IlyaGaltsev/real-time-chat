@@ -4,9 +4,7 @@ import "./ProfileLayout.scss"
 const ProfileLayout = ({ children }) => {
   return (
     <div className="profile-wrapper">
-      <div className="profile-contant">
-        {children}
-      </div>
+      <div className="profile-contant">{children}</div>
       <NavbarBottom />
     </div>
   )
