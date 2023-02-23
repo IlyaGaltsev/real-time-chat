@@ -7,7 +7,6 @@ import { useContext } from "react"
 import { Door } from "akar-icons"
 import "./ProfileScreen.scss"
 
-
 const ProfileScreen = () => {
   const { auth } = useContext(Context)
   const [user] = useAuthState(auth)
@@ -16,16 +15,25 @@ const ProfileScreen = () => {
     signOut(auth).catch(error => {
       console.log(error)
     })
+    // console.log(user)
   }
 
   if (!user) {
-    return <Navigate to="/" replace />
+    return (
+      <Navigate
+        to="/"
+        replace
+      />
+    )
   } else {
     return (
       <ProfileLayout>
         <div className="profile">
           <div className="profile-card">
-            <img src={user.photoURL} alt="ava" />
+            <img
+              src={user.photoURL}
+              alt="ava"
+            />
             <Door
               className="avatar-logout"
               onClick={logOut}
