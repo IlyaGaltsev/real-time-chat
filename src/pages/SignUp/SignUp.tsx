@@ -12,13 +12,23 @@ import { useContext } from 'react'
 // import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const SignUp: React.FC = () => {
-  const { auth } = useContext(Firebase)
+  const { auth, firestore } = useContext(Firebase)
   const {
     register,
     formState: { errors },
     // setError,
     handleSubmit
   } = useForm()
+
+  const addUserToFirestore = (userData: any) => {
+    firestore.collection('users').add(userData)
+      .then((docRef: { id: any }) => {
+        console.log('Document written with ID: ', docRef.id);
+      })
+      .catch((error: any) => {
+        console.error('Error adding document: ', error);
+      });
+  };
 
   const signUp = async ({ displayName, email, password }: FieldValues) => {
     console.log(displayName, email, password)
@@ -41,6 +51,14 @@ const SignUp: React.FC = () => {
       await auth.currentUser.updateProfile({
         displayName: displayName,
       });
+      const userData = {
+        displayName: auth.currentUser.displayName,
+        email: auth.currentUser.email,
+        uid: auth.currentUser.uid,
+        photoUrl: auth.currentUser.photoURL
+        // другие данные пользователя, которые вы хотите сохранить в Firestore
+      };
+      await addUserToFirestore(userData);
     } catch (error) {
       console.error(error);
     }
