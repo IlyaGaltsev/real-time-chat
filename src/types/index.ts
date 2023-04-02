@@ -5,8 +5,16 @@ export interface IFirebase {
 }
 
 export interface IFileds {
-    name: string
-    placeholder: string
-    type?: string
-    options: object
-  }
+  name: string
+  placeholder: string
+  type?: string
+  options: object
+}
+
+export interface IMessage {
+  created: string
+  displayName: string
+  photoUrl: string
+  text: string
+  uid: string
+}

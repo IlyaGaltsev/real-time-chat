@@ -33,19 +33,6 @@ const SignUp: React.FC = () => {
   const signUp = async ({ displayName, email, password }: FieldValues) => {
     console.log(displayName, email, password)
 
-    // try {
-    //   const { user } = auth.createUserWithEmailAndPassword(email, password)
-    //   if (user) {
-    //     await user
-    //       .updateProfile({ displayName })
-    //       .then(() => {
-    //         // signInWithEmailAndPassword(auth, email, password).catch(error => alert(error))
-    //       })
-    //       .catch((error: any) => alert(error))
-    //   }
-    // } catch (error) {
-    //   console.error(error)
-    // }
     try {
       await auth.createUserWithEmailAndPassword(email, password);
       await auth.currentUser.updateProfile({
@@ -56,36 +43,11 @@ const SignUp: React.FC = () => {
         email: auth.currentUser.email,
         uid: auth.currentUser.uid,
         photoUrl: auth.currentUser.photoURL
-        // другие данные пользователя, которые вы хотите сохранить в Firestore
       };
       await addUserToFirestore(userData);
     } catch (error) {
       console.error(error);
     }
-
-
-    // createUserWithEmailAndPassword(auth, email, password).catch(err => {
-    //   const jsonError = JSON.stringify(err)
-    //   const code = JSON.parse(jsonError).code
-
-    //   if (code.includes('password') != null) {
-    //     setError('password', {
-    //       message: 'Incorrect password'
-    //     })
-    //   }
-
-    //   if (code.includes('requests') != null) {
-    //     setError('email', {
-    //       message: 'Too many login attempts'
-    //     })
-    //   }
-
-    //   if (code.includes('found') != null) {
-    //     setError('email', {
-    //       message: 'Not found this user'
-    //     })
-    //   }
-    // })
   }
 
   return (
