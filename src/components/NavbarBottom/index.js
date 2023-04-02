@@ -1,1 +1,0 @@
-export { NavbarBottom } from "./NavbarBottom";
