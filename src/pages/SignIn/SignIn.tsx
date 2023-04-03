@@ -1,10 +1,8 @@
-// import * as S from 'SignIn.styled.ts'
-import React from "react"
+import React from 'react'
 import { Firebase } from '../../contexts/Firebase'
 import { type FieldValues, useForm } from 'react-hook-form'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import * as P from '../../styled/PublicComponents.styled'
-import { Button, TextField } from '@mui/material'
 import { signInFileds } from '../../constants/fileds'
 import { SIGNUP_ROUTE } from '../../constants/routesNames'
 import { type IFileds } from '../../types'
@@ -50,27 +48,28 @@ const SignIn: React.FC = () => {
       <P.SubTitle style={{ marginBottom: 16 }}>Sign in your account</P.SubTitle>
       {signInFileds.map(({ name, placeholder, type, options }: IFileds) => {
         return (
-          <TextField
-            key={name}
-            error={Boolean(errors[name])}
-            placeholder={placeholder}
-            type={type}
-            style={{ marginBottom: 12 }}
-            helperText={errors[name]?.message?.toString()}
-            {...register(name, options)}
-          />
+          <React.Fragment key={name}>
+            <P.PrimaryTextFieldTitle>{name}</P.PrimaryTextFieldTitle>
+            <P.PrimaryTextField
+              error={Boolean(errors[name])}
+              placeholder={placeholder}
+              type={type}
+              style={{ marginBottom: 12 }}
+              helperText={errors[name]?.message?.toString()}
+              {...register(name, options)}
+            />
+          </React.Fragment>
         )
       })}
-      <Button
+      <P.PrimaryButton
         style={{ marginTop: 8, marginBottom: 20 }}
         type="submit"
         variant="contained"
-        color="primary"
       >
         Sign In
-      </Button>
+      </P.PrimaryButton>
       <P.SubTitle>
-       {'Don`t have an account? '}
+        {'Don`t have an account? '}
         <P.RouteLink to={SIGNUP_ROUTE}>Create account</P.RouteLink>
       </P.SubTitle>
     </P.Form>

@@ -10,6 +10,8 @@ import firebase from 'firebase/compat/app'
 import { config } from './utils/firebase-config'
 import 'firebase/compat/firestore'
 import 'firebase/compat/auth'
+import { ThemeProvider } from '@mui/system'
+import { darkTheme } from './styled/themes'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 
@@ -21,7 +23,9 @@ root.render(
   <React.StrictMode>
     <Firebase.Provider value={{ firebase, auth, firestore }}>
       <Router>
-        <App />
+        <ThemeProvider theme={darkTheme}>
+          <App />
+        </ThemeProvider>
       </Router>
     </Firebase.Provider>
   </React.StrictMode>

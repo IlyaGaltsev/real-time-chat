@@ -4,6 +4,8 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { privateRoutes, publicRoutes } from '../router'
 import { Route, Routes } from 'react-router-dom'
 import { Admin } from '../layouts/Admin'
+import { Default } from '../layouts/Default'
+
 // import { Loader } from '../components/Loader'
 
 const App: React.FC = () => {
@@ -34,17 +36,19 @@ const App: React.FC = () => {
             </Routes>
           </Admin>
         ) : (
-          <Routes>
-            {publicRoutes.map(({ path, Component }) => {
-              return (
-                <Route
-                  key={path}
-                  path={path}
-                  element={Component}
-                />
-              )
-            })}
-          </Routes>
+          <Default>
+            <Routes>
+              {publicRoutes.map(({ path, Component }) => {
+                return (
+                  <Route
+                    key={path}
+                    path={path}
+                    element={Component}
+                  />
+                )
+              })}
+            </Routes>
+          </Default>
         )}
       </>
     )

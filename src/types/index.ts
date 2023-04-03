@@ -1,3 +1,7 @@
+export interface StringObject {
+  [key: string]: string
+}
+
 export interface IFirebase {
   firebase: any
   auth: any

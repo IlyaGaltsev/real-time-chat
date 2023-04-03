@@ -1,6 +1,6 @@
 import { DocumentData } from 'firebase/firestore'
 import * as S from './ListMessagesItem.styled'
-import Avatar from '@mui/material/Avatar'
+import { Avatar } from '@mui/material'
 
 interface IListMessagesItem {
   message: DocumentData
