@@ -5,8 +5,7 @@ import { privateRoutes, publicRoutes } from '../router'
 import { Route, Routes } from 'react-router-dom'
 import { Admin } from '../layouts/Admin'
 import { Default } from '../layouts/Default'
-
-// import { Loader } from '../components/Loader'
+import { Loader } from '../components/Loader'
 
 const App: React.FC = () => {
   const { auth } = useContext(Firebase)
@@ -17,42 +16,42 @@ const App: React.FC = () => {
   }, [user])
 
   if (loading) {
-    return <p>LOOOOOOADING....</p>
-  } else {
-    return (
-      <>
-        {user != null ? (
-          <Admin>
-            <Routes>
-              {privateRoutes.map(({ path, Component }) => {
-                return (
-                  <Route
-                    key={path}
-                    path={path}
-                    element={Component}
-                  />
-                )
-              })}
-            </Routes>
-          </Admin>
-        ) : (
-          <Default>
-            <Routes>
-              {publicRoutes.map(({ path, Component }) => {
-                return (
-                  <Route
-                    key={path}
-                    path={path}
-                    element={Component}
-                  />
-                )
-              })}
-            </Routes>
-          </Default>
-        )}
-      </>
-    )
+    return <Loader />
   }
+
+  return (
+    <>
+      {user != null ? (
+        <Admin>
+          <Routes>
+            {privateRoutes.map(({ path, Component }) => {
+              return (
+                <Route
+                  key={path}
+                  path={path}
+                  element={Component}
+                />
+              )
+            })}
+          </Routes>
+        </Admin>
+      ) : (
+        <Default>
+          <Routes>
+            {publicRoutes.map(({ path, Component }) => {
+              return (
+                <Route
+                  key={path}
+                  path={path}
+                  element={Component}
+                />
+              )
+            })}
+          </Routes>
+        </Default>
+      )}
+    </>
+  )
 }
 
 export { App }

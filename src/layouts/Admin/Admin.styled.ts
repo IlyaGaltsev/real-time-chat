@@ -1,18 +1,13 @@
 import styled from '@emotion/styled'
+import { colors } from '../../styled/colors'
 
 export const Wrapper = styled.div(() => ({
-  //   marginTop: 20,
-  //   paddingLeft: 16,
-  //   paddingRight: 16,
   display: 'flex',
-  flexDirection: 'column',
   alignItems: 'center',
-  width: '100%'
+  width: '100%',
+  color: colors.fontPrimary,
+  background: colors.secondary,
+  maxHeight: '100vh',
+  height: '100vh'
 }))
 
-export const Content = styled.div(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  maxWidth: 1536,
-  width: '100%'
-}))

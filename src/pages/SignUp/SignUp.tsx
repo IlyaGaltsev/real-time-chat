@@ -43,7 +43,8 @@ const SignUp: React.FC = () => {
         displayName: auth.currentUser.displayName,
         email: auth.currentUser.email,
         uid: auth.currentUser.uid,
-        photoUrl: auth.currentUser.photoURL
+        photoUrl: auth.currentUser.photoURL,
+        chats: []
       }
       await addUserToFirestore(userData)
     } catch (error) {

@@ -69,14 +69,14 @@ export const PrimaryTextField = styled(TextField)`
     width: 100%;
   }
 `
-// import { makeStyles } from '@material-ui/core/styles';
+interface ICenterBox {
+  background?: string
+}
 
-// (() => ({
-//   color: colors.fontPrimary,
-
-//   borderRadius: 8,
-
-//   "MuiInputBase-input MuiOutlinedInput-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input": {
-//     background: colors.background,
-//   }
-// }))
+export const CenterBox = styled.div(({background}: ICenterBox) => ({
+  display: 'flex',
+  background: background ?? colors.background,
+  height: '100vh',
+  justifyContent: 'center',
+  alignItems: 'center'
+}))

@@ -11,10 +11,10 @@ const ListMessages = (props: IListMessages) => {
   const { messages, myUid } = props
   return (
     <S.Wrapper>
-      {messages.map((message: DocumentData) => {
+      {messages.map((message: DocumentData, index: number) => {
         return (
           <ListMessagesItem
-            key={message.uid}
+            key={index}
             myUid={myUid}
             message={message}
           />

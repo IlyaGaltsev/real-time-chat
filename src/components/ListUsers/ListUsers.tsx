@@ -3,14 +3,7 @@ import React, { useContext } from 'react'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { Firebase } from '../../contexts/Firebase'
 
-// interface IListUser {
-// uid: string
-//   displayName: string
-//   email: string
-//   photoUrl: string
-// }
-
-const ListUsers = () => {
+const ListUsers = ({onUserClick}: any) => {
   const { firestore } = useContext(Firebase)
 
   const [users, isLoading] = useCollectionData(firestore.collection('users'))
@@ -18,12 +11,16 @@ const ListUsers = () => {
   if (isLoading) return <p>loading...</p>
   else
     return (
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+      <List sx={{ width: '100%' }}>
         {users !== undefined &&
           users?.map(({ uid, displayName, email, photoUrl }) => {
             return (
               <React.Fragment key={uid}>
-                <ListItem alignItems="flex-start">
+                <Divider
+                  variant="inset"
+                  component="li"
+                />
+                <ListItem alignItems="flex-start" onClick={() => onUserClick(uid)}>
                   <ListItemAvatar>
                     <Avatar
                       alt="Remy Sharp"
@@ -35,10 +32,6 @@ const ListUsers = () => {
                     secondary={email ?? 'none email'}
                   />
                 </ListItem>
-                <Divider
-                  variant="inset"
-                  component="li"
-                />
               </React.Fragment>
             )
           })}

@@ -23,12 +23,12 @@ export const publicRoutes = [
 
 export const privateRoutes = [
   {
-    path: routesNames.PROFILE_ROUTE,
-    Component: <Profile />
-  },
-  {
     path: routesNames.MESSANGER_ROUTE,
     Component: <Messanger />
+  },
+  {
+    path: routesNames.PROFILE_ROUTE,
+    Component: <Profile />
   },
   {
     path: routesNames.CHAT_ROUTE,
@@ -36,6 +36,6 @@ export const privateRoutes = [
   },
   {
     path: '*',
-    Component: <Profile />
+    Component: <Messanger />
   }
 ]
