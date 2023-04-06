@@ -1,3 +1,4 @@
+import { keyframes } from '@mui/system'
 import styled from '@emotion/styled'
 import { colors } from '../../styled/colors'
 
@@ -6,13 +7,24 @@ export const Wrapper = styled.div(() => ({
   width: '100%'
 }))
 
-export const Sidebar = styled.div(() => ({
-  display: 'flex',
-  flexDirection: 'column',
-  width: 400,
-  background: colors.background,
-  height: '100vh'
-}))
+const fadeIn = keyframes`
+from {
+  opacity: 0;
+}
+
+to {
+  opacity: 1;
+}
+`
+
+export const Sidebar = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background: ${colors.background};
+  height: 100vh;
+  animation: ${fadeIn} 1s;
+`
 
 export const WrapperChat = styled.div(() => ({
   display: 'flex',
@@ -32,7 +44,7 @@ export const MessageTool = styled.div(() => ({
   // width: '100%',
   position: 'sticky',
   bottom: 0,
-  backdropFilter: 'blur(5px)',
+  backdropFilter: 'blur(5px)'
   /* задаем цвет фона для браузеров, не поддерживающих backdrop-filter */
   // backgroundColor: 'rgba(255, 255, 255, 0.8)'
 }))

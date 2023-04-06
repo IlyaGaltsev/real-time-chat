@@ -46,16 +46,15 @@ const Messanger = () => {
   })
 
   const getChatById = async (chatId: string) => {
-    const chatRef = firestore.collection('chats').doc(chatId)
+    const chatRef = firestore.collection('chats')?.doc(chatId)
     const chatDoc = await chatRef.get()
     const chatData = (await chatDoc.data()) as Chat
 
-    console.log(chatData)
     setChatData(chatData)
   }
 
   useEffect(() => {
-    getChatById(chatId)
+    if (chatId) getChatById(chatId)
   }, [chatId])
 
   const addNewChat = (otherUserUid: string) => {
@@ -133,27 +132,13 @@ const Messanger = () => {
         <Button onClick={handleClickOpen('paper')}>New message</Button>
         <ChatList setChatId={setChatId} />
       </S.Sidebar>
-
       <S.WrapperChat>
         {chatId !== '' ? (
-          chatData?.messages ? (
-            <>
-              <ListMessages
-                myUid={myUid}
-                messages={chatData?.messages}
-              />
-              <S.MessageTool>
-                <P.PrimaryTextField
-                  placeholder="Search"
-                  style={{ marginBottom: 12 }}
-                  value={message}
-                  onChange={e => setMessage(e.target.value)}
-                />
-                <IconButton onClick={sendMessage}>
-                  <ArrowForwardOutlined />
-                </IconButton>
-              </S.MessageTool>
-            </>
+          chatData?.messages?.length ? (
+            <ListMessages
+              myUid={myUid}
+              messages={chatData?.messages}
+            />
           ) : (
             <P.CenterBox>
               <p>Cообщений ещё нет</p>
@@ -164,6 +149,17 @@ const Messanger = () => {
             <p>Start messangins</p>
           </P.CenterBox>
         )}
+        <S.MessageTool>
+          <P.PrimaryTextField
+            placeholder="Search"
+            style={{ marginBottom: 12 }}
+            value={message}
+            onChange={e => setMessage(e.target.value)}
+          />
+          <IconButton onClick={sendMessage}>
+            <ArrowForwardOutlined />
+          </IconButton>
+        </S.MessageTool>
       </S.WrapperChat>
       <Dialog
         open={open}

@@ -1,5 +1,5 @@
 import { Avatar, Divider, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore'
 import { Firebase } from '../../contexts/Firebase'
 import { Loader } from '../Loader'
@@ -12,10 +12,6 @@ const ChatList = ({ setChatId }: any) => {
   )
 
   const [users] = useCollectionData(firestore.collection('users'))
-
-  useEffect(() => {
-    console.log(users)
-  })
 
   if (loading) {
     return <Loader />
