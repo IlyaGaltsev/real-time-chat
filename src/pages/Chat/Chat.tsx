@@ -1,32 +1,43 @@
-import { useCollectionData } from 'react-firebase-hooks/firestore'
-import { useContext } from 'react'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import { Firebase } from '../../contexts/Firebase'
-import * as S from './Chat.styled'
-import { ListMessages } from '../../components/ListMessages'
-import { ListUsers } from '../../components/ListUsers'
+// import { useCollectionData } from 'react-firebase-hooks/firestore';
+import { useContext, useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Firebase } from '../../contexts/Firebase';
+import * as S from './Chat.styled';
+import { ListMessages } from '../../components/ListMessages';
+import { ListUsers } from '../../components/ListUsers';
 
 const Chat = () => {
-  const { firestore, auth } = useContext(Firebase)
-  const [user] = useAuthState(auth)
-  const [messages, isLoading] = useCollectionData(
-    firestore.collection('messages').orderBy('created')
-  )
+  const { firestore, auth } = useContext(Firebase);
+  const [user] = useAuthState(auth);
+  const [messages, setMessages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const myUid: string = user?.uid ?? ''
+  useEffect(() => {
+    const unsubscribe = firestore
+      .collection('messages')
+      .orderBy('created')
+      .onSnapshot((snapshot: any) => {
+        const updatedMessages = snapshot.docs.map((doc: any) => doc.data());
+        setMessages(updatedMessages);
+        setIsLoading(false);
+      });
 
-  console.log(myUid, messages)
+    return () => {
+      unsubscribe();
+    };
+  }, [firestore]);
 
-  if (isLoading) return <p>Loading............</p>
+  const myUid = user?.uid ?? '';
+
+  console.log(myUid, messages);
+
+  if (isLoading) return <p>Loading............</p>;
   else
     return (
       <S.Wrapper>
         <ListUsers />
-        {messages?.length ? (
-          <ListMessages
-            myUid={myUid}
-            messages={messages}
-          />
+        {messages.length ? (
+          <ListMessages myUid={myUid} messages={messages} />
         ) : (
           <p>Cообщений ещё нет</p>
         )}
@@ -34,6 +45,7 @@ const Chat = () => {
         {/* ListMEssages */}
         {/* BottomInput */}
       </S.Wrapper>
-    )
-}
-export { Chat }
+    );
+};
+
+export { Chat };

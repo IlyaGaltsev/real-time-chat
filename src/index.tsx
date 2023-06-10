@@ -5,7 +5,7 @@ import { App } from './App'
 import reportWebVitals from './reportWebVitals'
 
 import { Firebase } from './contexts/Firebase'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { HashRouter as Router } from 'react-router-dom'
 import firebase from 'firebase/compat/app'
 import { config } from './utils/firebase-config'
 import 'firebase/compat/firestore'

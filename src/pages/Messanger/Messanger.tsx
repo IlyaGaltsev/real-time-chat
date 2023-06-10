@@ -1,10 +1,10 @@
-import { useContext, useEffect, useRef, useState } from 'react'
-import { Firebase } from '../../contexts/Firebase'
-import * as S from './Messanger.styled'
-import * as P from '../../styled/PublicComponents.styled'
-import { PROFILE_ROUTE } from '../../constants/routesNames'
-import { Box } from '@mui/system'
-import { ListMessages } from '../../components/ListMessages'
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { Firebase } from '../../contexts/Firebase';
+import * as S from './Messanger.styled';
+import * as P from '../../styled/PublicComponents.styled';
+import { PROFILE_ROUTE } from '../../constants/routesNames';
+import { Box } from '@mui/system';
+import { ListMessages } from '../../components/ListMessages';
 import {
   Button,
   Dialog,
@@ -13,104 +13,101 @@ import {
   DialogProps,
   DialogTitle,
   IconButton
-} from '@mui/material'
-import { ArrowForwardOutlined } from '@mui/icons-material'
-import { ChatList } from '../../components/ChatList'
-import { ListUsers } from '../../components/ListUsers'
-import { colors } from '../../styled/colors'
+} from '@mui/material';
+import { ArrowForwardOutlined } from '@mui/icons-material';
+import { ChatList } from '../../components/ChatList';
+import { ListUsers } from '../../components/ListUsers';
+import { colors } from '../../styled/colors';
 
 export interface Chat {
-  participants: string[]
+  participants: string[];
   messages: {
-    senderId: string
-    text: string
-  }[]
+    senderId: string;
+    text: string;
+  }[];
 }
 
 const Messanger = () => {
-  const { auth, firestore } = useContext(Firebase)
-  const [searchValue, setSearchValue] = useState('')
-  const [message, setMessage] = useState('')
-  const myUid: string = auth.currentUser.uid ?? ''
+  const { auth, firestore } = useContext(Firebase);
+  const [searchValue, setSearchValue] = useState('');
+  const [message, setMessage] = useState('');
+  const myUid: string = auth.currentUser?.uid ?? '';
 
-  const [chatId, setChatId] = useState('')
+  const [chatId, setChatId] = useState('');
 
   const [chatData, setChatData] = useState<Chat>({
     participants: [],
-    messages: [
-      {
-        senderId: '',
-        text: ''
-      }
-    ]
-  })
+    messages: []
+  });
 
   const getChatById = async (chatId: string) => {
-    const chatRef = firestore.collection('chats')?.doc(chatId)
-    const chatDoc = await chatRef.get()
-    const chatData = (await chatDoc.data()) as Chat
+    const chatRef = firestore.collection('chats')?.doc(chatId);
+    const chatDoc = await chatRef.get();
+    const chatData = chatDoc.data() as Chat;
 
-    setChatData(chatData)
-  }
+    setChatData(chatData);
+  };
 
   useEffect(() => {
-    if (chatId) getChatById(chatId)
-  }, [chatId])
+    if (chatId) getChatById(chatId);
+  }, [chatId]);
 
   const addNewChat = (otherUserUid: string) => {
     firestore
       .collection('chats')
       .add({
-        participants: [auth.currentUser.uid, otherUserUid],
+        participants: [auth.currentUser?.uid, otherUserUid],
         messages: []
       })
-      .catch((error: any) => alert(error))
-  }
+      .catch((error: any) => alert(error));
+  };
 
   const addMessageToChat = async (chatId: string, messageData: any) => {
-    const chatRef = firestore.collection('chats').doc(chatId)
-    const chatDoc = await chatRef.get()
-    const chatData = chatDoc.data()
+    const chatRef = firestore.collection('chats').doc(chatId);
+    const chatDoc = await chatRef.get();
+    const chatData = chatDoc.data();
 
-    const updatedMessages = [...chatData.messages, messageData]
+    const updatedMessages = [...chatData.messages, messageData];
 
-    await chatRef.update({ messages: updatedMessages })
-  }
+    await chatRef.update({ messages: updatedMessages });
+  };
 
   const sendMessage = () => {
-    addMessageToChat(chatId, {
-      senderId: auth.currentUser.uid,
-      text: message
-    })
-  }
+    if (chatId) {
+      addMessageToChat(chatId, {
+        senderId: auth.currentUser?.uid,
+        text: message
+      });
+    }
+  };
 
-  const [open, setOpen] = useState(false)
-  const [scroll, setScroll] = useState<DialogProps['scroll']>('paper')
+  const [open, setOpen] = useState(false);
+  const [scroll, setScroll] = useState<DialogProps['scroll']>('paper');
 
   const handleClickOpen = (scrollType: DialogProps['scroll']) => () => {
-    setOpen(true)
-    setScroll(scrollType)
-  }
+    setOpen(true);
+    setScroll(scrollType);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
-  const descriptionElementRef = useRef<HTMLElement>(null)
+  const descriptionElementRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (open) {
-      const { current: descriptionElement } = descriptionElementRef
+      const { current: descriptionElement } = descriptionElementRef;
       if (descriptionElement !== null) {
-        descriptionElement.focus()
+        descriptionElement.focus();
       }
     }
-  }, [open])
+  }, [open]);
 
   const onUserClick = (uid: string) => {
-    handleClose()
-    addNewChat(uid)
-  }
+    handleClose();
+    addNewChat(uid);
+  };
 
   return (
     <S.Wrapper>
@@ -135,18 +132,15 @@ const Messanger = () => {
       <S.WrapperChat>
         {chatId !== '' ? (
           chatData?.messages?.length ? (
-            <ListMessages
-              myUid={myUid}
-              messages={chatData?.messages}
-            />
+            <ListMessages myUid={myUid} messages={chatData.messages} />
           ) : (
             <P.CenterBox>
-              <p>Cообщений ещё нет</p>
+              <p>Сообщений пока нет</p>
             </P.CenterBox>
           )
         ) : (
           <P.CenterBox background={colors.secondary}>
-            <p>Start messangins</p>
+            <p>Start messaging</p>
           </P.CenterBox>
         )}
         <S.MessageTool>
@@ -178,7 +172,7 @@ const Messanger = () => {
         </DialogActions>
       </Dialog>
     </S.Wrapper>
-  )
-}
+  );
+};
 
-export { Messanger }
+export { Messanger };
