@@ -1,10 +1,10 @@
 import React from 'react'
-import { Firebase } from '../../contexts/Firebase'
+import { Firebase } from '../../utils/contexts/Firebase'
 import { type FieldValues, useForm } from 'react-hook-form'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import * as P from '../../styled/PublicComponents.styled'
-import { signInFileds } from '../../constants/fileds'
-import { SIGNUP_ROUTE } from '../../constants/routesNames'
+import { signInFileds } from '../../utils/constants/fileds'
+import { SIGNUP_ROUTE } from '../../utils/constants/routesNames'
 import { type IFileds } from '../../types'
 import { useContext } from 'react'
 

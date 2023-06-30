@@ -3,8 +3,8 @@ import * as S from './ListMessagesItem.styled'
 import { Avatar } from '@mui/material'
 import { useCollectionData } from 'react-firebase-hooks/firestore'
 import { useContext } from 'react'
-import { Firebase } from '../../contexts/Firebase'
-import { Loader } from '../Loader'
+import { Firebase } from '../../utils/contexts/Firebase'
+import Loader from '../Loader'
 import { colors } from '../../styled/colors'
 
 interface IListMessagesItem {

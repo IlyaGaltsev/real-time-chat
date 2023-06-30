@@ -11,10 +11,10 @@ import Avatar from '@mui/material/Avatar'
 import Tooltip from '@mui/material/Tooltip'
 import MenuItem from '@mui/material/MenuItem'
 import AdbIcon from '@mui/icons-material/Adb'
-import * as routesNames from '../../constants/routesNames'
+import * as routesNames from '../../utils/constants/routesNames'
 import { Link } from 'react-router-dom'
 import { signOut } from 'firebase/auth'
-import { Firebase } from '../../contexts/Firebase'
+import { Firebase } from '../../utils/contexts/Firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 
 const pages = [

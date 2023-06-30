@@ -1,11 +1,11 @@
 import * as S from './Profile.styled'
 import * as P from '../../styled/PublicComponents.styled'
 import React, { useContext, useState } from 'react'
-import { Firebase } from '../../contexts/Firebase'
+import { Firebase } from '../../utils/contexts/Firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { Avatar, Button, Input } from '@mui/material'
 import { signOut, updateProfile } from 'firebase/auth'
-import { Loader } from '../../components/Loader'
+import Loader from '../../components/Loader'
 
 const Profile = () => {
   const { auth, firestore } = useContext(Firebase)

@@ -2,9 +2,9 @@ import React from 'react'
 import { Profile } from './pages/Profile'
 import { SignIn } from './pages/SignIn'
 import { SignUp } from './pages/SignUp'
-import * as routesNames from './constants/routesNames'
+import * as routesNames from './utils/constants/routesNames'
 import { Messanger } from './pages/Messanger'
-import { Chat } from './pages/Chat'
+// import { Chat } from './pages/Chat'
 
 export const publicRoutes = [
   {
@@ -29,10 +29,6 @@ export const privateRoutes = [
   {
     path: routesNames.PROFILE_ROUTE,
     Component: <Profile />
-  },
-  {
-    path: routesNames.CHAT_ROUTE,
-    Component: <Chat />
   },
   {
     path: '*',

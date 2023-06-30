@@ -1,4 +1,4 @@
-import type { IFirebase } from '../types'
+import type { IFirebase } from '../../types'
 import { createContext } from 'react'
 
 const defaultState = {

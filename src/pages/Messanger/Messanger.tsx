@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useRef, useState } from 'react';
-import { Firebase } from '../../contexts/Firebase';
+import { Firebase } from '../../utils/contexts/Firebase';
 import * as S from './Messanger.styled';
 import * as P from '../../styled/PublicComponents.styled';
-import { PROFILE_ROUTE } from '../../constants/routesNames';
+import { PROFILE_ROUTE } from '../../utils/constants/routesNames';
 import { Box } from '@mui/system';
 import { ListMessages } from '../../components/ListMessages';
 import {

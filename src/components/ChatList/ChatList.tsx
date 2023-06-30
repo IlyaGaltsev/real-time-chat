@@ -1,8 +1,8 @@
 import { Avatar, Divider, ListItem, ListItemAvatar, ListItemText } from '@mui/material'
 import React, { useContext } from 'react'
 import { useCollection, useCollectionData } from 'react-firebase-hooks/firestore'
-import { Firebase } from '../../contexts/Firebase'
-import { Loader } from '../Loader'
+import { Firebase } from '../../utils/contexts/Firebase'
+import Loader from '../Loader'
 
 const ChatList = ({ setChatId }: any) => {
   const { auth, firestore } = useContext(Firebase)

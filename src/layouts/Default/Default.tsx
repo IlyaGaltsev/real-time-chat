@@ -7,4 +7,5 @@ interface ILayoutProp {
 const Default = ({ children }: ILayoutProp) => {
   return <S.Wrapper>{children}</S.Wrapper>
 }
+
 export { Default }

@@ -1,21 +1,17 @@
-// import * as S from 'SignUp.styled.ts'
 import React from 'react'
-import { Firebase } from '../../contexts/Firebase'
+import { Firebase } from '../../utils/contexts/Firebase'
 import { type FieldValues, useForm } from 'react-hook-form'
-// import { createUserWithEmailAndPassword } from 'firebase/auth'
 import * as P from '../../styled/PublicComponents.styled'
-import { signUpFileds } from '../../constants/fileds'
-import { SIGNIN_ROUTE } from '../../constants/routesNames'
+import { signUpFileds } from '../../utils/constants/fileds'
+import { SIGNIN_ROUTE } from '../../utils/constants/routesNames'
 import { type IFileds } from '../../types'
 import { useContext } from 'react'
-// import { signInWithEmailAndPassword } from 'firebase/auth'
 
 const SignUp: React.FC = () => {
   const { auth, firestore } = useContext(Firebase)
   const {
     register,
     formState: { errors },
-    // setError,
     handleSubmit
   } = useForm()
 

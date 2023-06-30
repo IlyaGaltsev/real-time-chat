@@ -13,4 +13,4 @@ const Loader = ({ background }: iLoader) => {
   )
 }
 
-export { Loader }
+export default Loader;
