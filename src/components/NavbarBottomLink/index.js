@@ -1,1 +1,0 @@
-export { NavbarBottomLink } from "./NavbarBottomLink"

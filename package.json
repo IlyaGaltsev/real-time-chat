@@ -1,29 +1,29 @@
 {
-  "name": "chatonreact",
+  "name": "messanger",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ilyagaltsev.github.io/RealTime-Chat/",
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
-    "@hookform/error-message": "^2.0.1",
-    "@reduxjs/toolkit": "^1.8.5",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@mui/icons-material": "^5.11.11",
+    "@mui/material": "^5.13.4",
     "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
+    "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "akar-icons": "^1.9.22",
-    "firebase": "^9.9.3",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.23",
+    "@types/react": "^18.0.32",
+    "@types/react-dom": "^18.0.11",
+    "firebase": "^9.19.1",
     "gh-pages": "^5.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-firebase-hooks": "^5.0.3",
-    "react-hook-form": "^7.43.1",
-    "react-icons": "^4.4.0",
-    "react-router-dom": "^6.8.0",
+    "react-firebase-hooks": "^5.1.1",
+    "react-hook-form": "^7.43.9",
+    "react-router-dom": "^6.10.0",
     "react-scripts": "5.0.1",
-    "react-switch": "^7.0.0",
-    "sass": "^1.57.1",
-    "styled-components": "^5.3.5",
-    "uuid": "^8.3.2",
+    "styled-components": "^5.3.9",
+    "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -31,6 +31,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "lint": "eslint --ext .tsx --ext .ts .",
+    "lint:fix": "eslint --ext .tsx --ext .ts --fix .",
     "deploy": "gh-pages -d build",
     "predeploy": "npm run build"
   },
@@ -51,5 +53,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
